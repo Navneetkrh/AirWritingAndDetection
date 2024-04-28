@@ -60,15 +60,12 @@ This is carried out by the `HandDetector` class which has the following methods:
 - `find_fingers_up`: Determines which fingers are up based on the landmarks.
 
 This is done in the following steps:
+
 - **Step 1**: Capture the video feed from the webcam.
 - **Step 2**: Process each frame of the video feed to detect hands. They are converted from BGR to RGB and resized and normalized for efficient processing.
 - **Step 3**: Extract the landmarks of the fingers from the detected hands. These landmarks are used to determine the position and orientation of the fingers in the frame. This utilizes a CNN model trained on the MediaPipe dataset to detect the landmarks accurately.
 - **Step 4**: Analyze the landmarks to determine the state of the fingers (open or closed) and the position of the index finger. This information is used for gesture recognition and digit recognition.
 - **Step 5**: Display the detected fingers and gestures on the screen in real-time to provide feedback to the user.
-
-
-
-
 
 ## 2. Virtual Canvas Creation
 
@@ -84,9 +81,9 @@ For this to work we have created a `Writer` class which has the following method
 - `clear`: Clears the list of points.
 - `draw`: Draws lines between consecutive points in the list of points on the given image.
 - `range_points`: Returns the minimum and maximum x and y coordinates among the points in the list.
-every time the user points on the screen if the point is on the canvas then the point is added to the list of points and then the line is drawn between the points to show the user that the digit is being written on the screen.
-A new writer object is created everytime when the user stops pointing and then starts pointing again to write a new digit.
-This is done to make sure that the digits are written properly for the digit recognition model to recognize it. So,we can seperate the digits written in the air.
+  every time the user points on the screen if the point is on the canvas then the point is added to the list of points and then the line is drawn between the points to show the user that the digit is being written on the screen.
+  A new writer object is created everytime when the user stops pointing and then starts pointing again to write a new digit.
+  This is done to make sure that the digits are written properly for the digit recognition model to recognize it. So,we can seperate the digits written in the air.
 
 Else all points by all writers can be drawn on the screen and then we can use clustering to seperate the digits written in the air.
 
@@ -110,6 +107,53 @@ This methodology combines computer vision techniques for real-time finger tracki
 
 ## Observations and Conclusions
 
+Step 1:Air writing
 
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images\result_image1.png" alt="Logo" height="480" width="640">
+  </a>
+</div>
+
+Step 2: Box detection and digit segmentation
+
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images\result_image 2.png" alt="Logo" height="400" width="400">
+  </a>
+</div>
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images\result_image 3.png" alt="Logo" height="400" width="400">
+  </a>
+</div>
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images\result_image 4.png" alt="Logo" height="400" width="400">
+  </a>
+</div>
+Step 3: Detection results form model
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images\result_image 5.png" alt="Logo" height="400" width="400">
+  </a>
+</div>
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images\result_image 6.png" alt="Logo" height="400" width="400">
+  </a>
+</div>
+<div align="center">
+  <a href="https://github.com/othneildrew/Best-README-Template">
+    <img src="images\result_image 7.png" alt="Logo" height="400" width="400">
+  </a>
+</div>
 
 ## References
+
+Research paper:-
+
+1. Hand gesture detection[https://www.researchgate.net/publication/284626785_Hand_Gesture_Recognition_A_Literature_Review](https://www.researchgate.net/publication/284626785_Hand_Gesture_Recognition_A_Literature_Review)
+2. CNN pdf link: [https://arxiv.org/pdf/1909.08490]([https://arxiv.org/pdf/1909.08490]())
+3. Box detection: [https://jwcn-eurasipjournals.springeropen.com/articles/10.1186/s13638-020-01826-x](https://jwcn-eurasipjournals.springeropen.com/articles/10.1186/s13638-020-01826-x)
+4. Gaussian Blur and Otsu threshholding:[ https://www.researchgate.net/figure/Matched-image-after-applying-Gaussian-Blur-and-Otsus-thresholding-7-Set-of-ROI-To_fig2_323055012](https://www.researchgate.net/figure/Matched-image-after-applying-Gaussian-Blur-and-Otsus-thresholding-7-Set-of-ROI-To_fig2_323055012)
